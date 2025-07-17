@@ -42,12 +42,6 @@ This project follows a clean architecture pattern with clear separation of conce
 - **Mapper Pattern** - Entity to DTO conversion
 - **Dependency Injection** - For DbContext and services
 
-## Project Structure
-
-API/ ├── Controllers/ │ └── StockController.cs # Main API controller ├── Data/ │ └── ApplicationDbContext.cs # Database context ├── Dtos/ │ └── Stock/ │ ├── CreateStockRequestDto.cs │ ├── UpdateStockRequestDto.cs │ └── StockDto.cs ├── EndPoints/ │ └── ApiEndPoints.cs # Centralized route definitions ├── Mappers/ │ └── StockMappers.cs # Entity to DTO mapping └── Models/ └── Stock.cs # Entity model
-
-
-
 
 ## API Endpoints
 
@@ -77,29 +71,47 @@ API/ ├── Controllers/ │ └── StockController.cs # Main API controll
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd stock-crud-api
+git clone https://github.com/Sonseldeep/stock-api
+cd stock-api
 ```
 2. Restore dependencies
 ```bash
 dotnet restore
 ```
-3. Run Database Migrations
+
+## 🔧 Setup Entity Framework Core with SQL Server using .NET CLI
+
+### 1️⃣ Install Required EF Core Packages
+
+Use the following commands to install the necessary NuGet packages via .NET CLI:
+
 ```bash
-dotnet run
-```
+# EF Core Runtime
+dotnet add package Microsoft.EntityFrameworkCore
+
+# EF Core SQL Server Provider
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+
+# EF Core Tools (for migrations and database update)
+dotnet add package Microsoft.EntityFrameworkCore.Tools
 
 
-Best Practices Implemented
+# Add Migration
+dotnet ef migrations add AddStockTableToDb
+
+# Update Database
+dotnet ef database update
 
 
+## 🔗 Connection String Configuration
 
-Best Practices Implemented
-✅ RESTful API design
-✅ Proper HTTP status codes
-✅ DTO pattern for data transfer
-✅ Centralized endpoint management
-✅ Entity Framework best practices
-✅ Dependency injection
-✅ API documentation with attributes
-✅ Clean code architecture
+Make sure your `appsettings.json` includes a valid SQL Server connection string:
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Database=YourDbName;User Id=SA;Password=YourStrongPassword;TrustServerCertificate=True;"
+  }
+}
+
+
