@@ -55,5 +55,27 @@ public class StockController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = stockModel.Id }, stockModel.ToStockDto());
 
     }
-    
+
+    [HttpPut("stocks/{id:int}")]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateDto)
+    {
+        var stockModel = _context.Stocks.SingleOrDefault(x => x.Id == id);
+        if (stockModel is null)
+        {
+            return NotFound();
+        }
+
+        stockModel.Symbol = updateDto.Symbol;
+        stockModel.CompanyName = updateDto.CompanyName;
+        stockModel.Purchase = updateDto.Purchase;
+        stockModel.LastDiv = updateDto.LastDiv;
+        stockModel.Industry = updateDto.Industry;
+        stockModel.MarketCap = updateDto.MarketCap;
+
+        _context.SaveChanges();
+        return Ok(stockModel.ToStockDto());
+
+    }
     }
