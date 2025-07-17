@@ -1,4 +1,5 @@
 using API.Data;
+using API.Dtos.Stock;
 using API.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -40,4 +41,17 @@ public class StockController : ControllerBase
 
         return Ok(stock.ToStockDto());
     }
-}
+
+    [HttpPost("stocks")]
+
+    public IActionResult Create([FromBody] CreateStockRequestDto stockDto)
+    {
+        var stockModel = stockDto.ToStockFromCreateDto();
+        _context.Stocks.Add(stockModel);
+        _context.SaveChanges();
+
+        return CreatedAtAction(nameof(Get), new { id = stockModel.Id }, stockModel.ToStockDto());
+
+    }
+    
+    }
