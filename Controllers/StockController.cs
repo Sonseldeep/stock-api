@@ -78,4 +78,21 @@ public class StockController : ControllerBase
         return Ok(stockModel.ToStockDto());
 
     }
+
+    [HttpDelete("stocks/{id:int}")]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public IActionResult Delete([FromRoute] int id)
+    {
+        var stockModel = _context.Stocks.SingleOrDefault(x => x.Id == id);
+        if (stockModel is null)
+        {
+            return NotFound();
+        }
+
+        _context.Stocks.Remove(stockModel);
+        _context.SaveChanges();
+        return NoContent();
+    }
+    
     }
