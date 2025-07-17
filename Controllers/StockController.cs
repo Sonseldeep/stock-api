@@ -1,11 +1,12 @@
 using API.Data;
 using API.Dtos.Stock;
+using API.EndPoints;
 using API.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
-[Route("api")]
+
 [ApiController]
 
 public class StockController : ControllerBase
@@ -16,7 +17,7 @@ public class StockController : ControllerBase
         _context = context;
     }
 
-    [HttpGet("stocks")]
+    [HttpGet(ApiEndPoints.Stocks.GetAll)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult GetAll()
     {
@@ -28,7 +29,7 @@ public class StockController : ControllerBase
 
     }
 
-    [HttpGet("stocks/{id:int}")]
+    [HttpGet(ApiEndPoints.Stocks.GetById)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public IActionResult Get([FromRoute] int id)
@@ -42,7 +43,7 @@ public class StockController : ControllerBase
         return Ok(stock.ToStockDto());
     }
 
-    [HttpPost("stocks")]
+    [HttpPost(ApiEndPoints.Stocks.Create)]
     [ProducesResponseType(StatusCodes.Status201Created)]
 
     public IActionResult Create([FromBody] CreateStockRequestDto stockDto)
@@ -56,7 +57,7 @@ public class StockController : ControllerBase
 
     }
 
-    [HttpPut("stocks/{id:int}")]
+    [HttpPut(ApiEndPoints.Stocks.Update)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateDto)
@@ -79,7 +80,7 @@ public class StockController : ControllerBase
 
     }
 
-    [HttpDelete("stocks/{id:int}")]
+    [HttpDelete(ApiEndPoints.Stocks.Delete)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public IActionResult Delete([FromRoute] int id)
