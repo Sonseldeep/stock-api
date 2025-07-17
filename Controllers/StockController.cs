@@ -43,9 +43,11 @@ public class StockController : ControllerBase
     }
 
     [HttpPost("stocks")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
 
     public IActionResult Create([FromBody] CreateStockRequestDto stockDto)
     {
+      
         var stockModel = stockDto.ToStockFromCreateDto();
         _context.Stocks.Add(stockModel);
         _context.SaveChanges();

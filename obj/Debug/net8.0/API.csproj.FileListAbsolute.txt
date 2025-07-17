@@ -152,7 +152,6 @@
 /home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/API.csproj.CoreCompileInputs.cache
 /home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/API.MvcApplicationPartsAssemblyInfo.cs
 /home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/API.MvcApplicationPartsAssemblyInfo.cache
-/home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/API.sourcelink.json
 /home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/staticwebassets.build.json
 /home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/staticwebassets.development.json
 /home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/staticwebassets/msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props
