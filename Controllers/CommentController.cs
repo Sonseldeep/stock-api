@@ -1,3 +1,5 @@
+using API.EndPoints;
+using API.Mappers;
 using API.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,5 +11,15 @@ public class CommentController : ControllerBase
     public CommentController(ICommentRepository commentRepo)
     {
         _commentRepo = commentRepo;
+    }
+
+    [HttpGet(ApiEndPoints.Comments.GetAll)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAll()
+    {
+        var comments = await _commentRepo.GetAllAsync();
+        var commentDto = comments.Select(x => x.ToCommentDto());
+        return Ok(commentDto);
+
     }
 }
