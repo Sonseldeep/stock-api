@@ -19,12 +19,12 @@ public class StockController : ControllerBase
 
     [HttpGet(ApiEndPoints.Stocks.GetAll)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult GetAll()
+    public async  Task<IActionResult> GetAll()
     {
-        var stocks = _context.Stocks
+        var stocks = await _context.Stocks
             .AsNoTracking()
             .Select(x => x.ToStockDto())
-            .ToList();
+            .ToListAsync();
         return Ok(stocks);
 
     }
