@@ -32,9 +32,9 @@ public class StockController : ControllerBase
     [HttpGet(ApiEndPoints.Stocks.GetById)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public IActionResult Get([FromRoute] int id)
+    public async Task<IActionResult> Get([FromRoute] int id)
     {
-        var stock = _context.Stocks.SingleOrDefault(x => x.Id == id);
+        var stock = await _context.Stocks.SingleOrDefaultAsync(x => x.Id == id);
         if (stock is null)
         {
             return NotFound();
