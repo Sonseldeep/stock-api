@@ -166,3 +166,4 @@
 /home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/API.pdb
 /home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/API.genruntimeconfig.cache
 /home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/ref/API.dll
+/home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/API.sourcelink.json
