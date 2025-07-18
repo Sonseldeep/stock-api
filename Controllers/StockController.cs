@@ -1,10 +1,11 @@
-using API.Data;
+// using API.Data;
+
 using API.Dtos.Stock;
 using API.EndPoints;
 using API.Mappers;
 using API.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace API.Controllers;
 
@@ -13,11 +14,11 @@ namespace API.Controllers;
 public class StockController : ControllerBase
 {
     private readonly IStockRepository _stockRepo;
-    private readonly ApplicationDbContext _context;
-    public StockController(ApplicationDbContext context, IStockRepository stockRepo)
+    
+    public StockController(  IStockRepository stockRepo)
     {
         _stockRepo = stockRepo;
-        _context = context;
+        
     }
 
     [HttpGet(ApiEndPoints.Stocks.GetAll)]
@@ -52,8 +53,6 @@ public class StockController : ControllerBase
       
         var stockModel = stockDto.ToStockFromCreateDto();
         await _stockRepo.CreateAsync(stockModel);
-        await  _context.SaveChangesAsync();
-
         return CreatedAtAction(nameof(Get), new { id = stockModel.Id }, stockModel.ToStockDto());
 
     }
