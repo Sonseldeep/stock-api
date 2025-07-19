@@ -19,13 +19,14 @@ public class StockRepository : IStockRepository
     
     public async Task<List<Stock>> GetAllAsync()
     {
-        return await _context.Stocks.AsNoTracking().ToListAsync();
+        return await _context.Stocks.AsNoTracking().Include(x => x.Comments).ToListAsync();
     }
 
     public async Task<Stock?> GetByIdAsync(int id)
     {
         return await _context
             .Stocks
+            .Include(x => x.Comments)
             .SingleOrDefaultAsync(x => x.Id == id);
         
     }

@@ -167,3 +167,7 @@
 /home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/API.genruntimeconfig.cache
 /home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/ref/API.dll
 /home/sonseldeep/RiderProjects/FineShark/API/obj/Debug/net8.0/API.sourcelink.json
+/home/sonseldeep/RiderProjects/FineShark/API/bin/Debug/net8.0/Microsoft.AspNetCore.JsonPatch.dll
+/home/sonseldeep/RiderProjects/FineShark/API/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/home/sonseldeep/RiderProjects/FineShark/API/bin/Debug/net8.0/Newtonsoft.Json.dll
+/home/sonseldeep/RiderProjects/FineShark/API/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll
